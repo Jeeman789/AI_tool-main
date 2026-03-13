@@ -1,8 +1,10 @@
 import requests
 from schedule_editor import Schedule
 
-schedule = Schedule("schedule.json")
-schedule.create_schedule_file()
+def start_chat():
+    ask(
+        "You are my personal assistant named Albus"
+    )
 
 def core():
     user = input("You: ")
@@ -19,6 +21,9 @@ def ask(prompt):
         }
     )
     return response.json()["response"]
+
+schedule = Schedule("schedule.json")
+schedule.create_schedule_file()
 
 while True:
     core()

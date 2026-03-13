@@ -10,7 +10,7 @@ class Schedule:
     def create_schedule_file(self):
         if not Path(self.filename).exists():
             with open(self.filename, 'w') as f:
-                json.dump({"Schedule": {
+                json.dump({
                     "Monday": [],
                     "Tuesday": [],
                     "Wednesday": [],
@@ -18,7 +18,7 @@ class Schedule:
                     "Friday": [],
                     "Saturday": [],
                     "Sunday": []
-                }}, f)
+                }, f)
         else:
             with open(self.filename, 'r') as f:
                 data = json.load(f)
