@@ -1,4 +1,13 @@
 import requests
+from schedule_editor import Schedule
+
+schedule = Schedule("schedule.json")
+schedule.create_schedule_file()
+
+def core():
+    user = input("You: ")
+    response = ask(user)
+    print("AI:", response)
 
 def ask(prompt):
     response = requests.post(
@@ -12,5 +21,6 @@ def ask(prompt):
     return response.json()["response"]
 
 while True:
-    user = input("You: ")
-    print("AI:", ask(user))
+    core()
+
+
