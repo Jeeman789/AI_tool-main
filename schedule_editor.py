@@ -26,3 +26,12 @@ class Schedule:
 
     def add_task(self, task, time):
         self.tasks.append((task, time))
+    
+    def load_schedule():
+        pass
+
+    def save_schedule():
+        pass
+
+    def list_tasks():
+        pass
