@@ -2,17 +2,25 @@ import requests
 from schedule_editor import Schedule
 
 def start_chat():
-    ask(
-        "You are my personal assistant named Achilles, you keep me up to date on my schedule and let me know if i'm missing tasks and can help organize my schedule. You can help me add tasks/events, delete them, change them and suggest new ways to reorganize my schedule."
-    )
+    try:
+        ask(
+            "You are my personal assistant named Achilles, you keep me up to date on my schedule and let me know if i'm missing tasks and can help organize my schedule. You can help me add tasks/events, delete them, change them and suggest new ways to reorganize my schedule."
+        )
+    except:
+        print("This did not work")
 
 def chat():
+    
+    print("Llama is ready, type \"leave\" to exit session\n")
 
     start_chat()
-    
-    user = input("You: ")
-    response = ask(user)
-    print("AI:", response)
+
+    while True:
+        user = input("You: ")
+        if user == "leave":
+            break
+        response = ask(user)
+        print("AI:", response)
 
 def ask(prompt):
     response = requests.post(

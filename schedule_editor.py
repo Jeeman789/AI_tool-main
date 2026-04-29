@@ -51,12 +51,11 @@ class Schedule:
             json.dump(self.tasks)
 
     def list_tasks(self):
-        for i in range(len(self.tasks)):
-            print("\n" + self.tasks["Monday"])
-            print("\n" + self.tasks["Tuesday"])
-            print("\n" + self.tasks["Wednesday"])
-            print("\n" + self.tasks["Thursday"])
-            print("\n" + self.tasks["Friday"])
-            print("\n" + self.tasks["Saturday"])
-            print("\n" + self.tasks["Sunday"])
+        print("\nMonday: ", self.tasks["Monday"])
+        print("Tuesday: ", self.tasks["Tuesday"])
+        print("Wednesday: ", self.tasks["Wednesday"])
+        print("Thursday: ", self.tasks["Thursday"])
+        print("Friday: ", self.tasks["Friday"])
+        print("Saturday: ", self.tasks["Saturday"])
+        print("Sunday: ", self.tasks["Sunday"])
     
