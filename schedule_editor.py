@@ -4,34 +4,59 @@ from pathlib import Path
 class Schedule:
     def __init__(self, filename):
         self.filename = filename
-        self.tasks = []
-        self.create_schedule_file()
+        self.tasks = self.load_schedule()
 
     def create_schedule_file(self):
+        with open(self.filename, 'w') as f:
+            base = {
+                "Monday": [],
+                "Tuesday": [],
+                "Wednesday": [],
+                "Thursday": [],
+                "Friday": [],
+                "Saturday": [],
+                "Sunday": []
+            }
+            json.dump(base, f)
+
+        return base
+    
+    def clear_file(self):
+        with open(self.filename, "w"):
+            pass
+
+    def add_task(self, day, task, time):
+        return self.tasks[day].append[task, time]
+    
+    def add_task(self, day, task, time):
+        return self.tasks[day].append[task, time]
+    
+    def load_schedule(self):
+        data = None
         if not Path(self.filename).exists():
-            with open(self.filename, 'w') as f:
-                json.dump({
-                    "Monday": [],
-                    "Tuesday": [],
-                    "Wednesday": [],
-                    "Thursday": [],
-                    "Friday": [],
-                    "Saturday": [],
-                    "Sunday": []
-                }, f)
+            data = self.create_schedule_file()
         else:
             with open(self.filename, 'r') as f:
                 data = json.load(f)
-                print(data)
+                days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
-    def add_task(self, task, time):
-        self.tasks.append((task, time))
+                if not all(item in data for item in days):
+                    self.clear_file()
+                    data = self.create_schedule_file()
+        return data
+                
+
+    def save_schedule(self):
+        with open(self.filename, "w"):
+            json.dump(self.tasks)
+
+    def list_tasks(self):
+        for i in range(len(self.tasks)):
+            print("\n" + self.tasks["Monday"])
+            print("\n" + self.tasks["Tuesday"])
+            print("\n" + self.tasks["Wednesday"])
+            print("\n" + self.tasks["Thursday"])
+            print("\n" + self.tasks["Friday"])
+            print("\n" + self.tasks["Saturday"])
+            print("\n" + self.tasks["Sunday"])
     
-    def load_schedule():
-        pass
-
-    def save_schedule():
-        pass
-
-    def list_tasks():
-        pass
